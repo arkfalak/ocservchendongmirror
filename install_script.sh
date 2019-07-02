@@ -54,7 +54,7 @@ function sys_clean(){
 	sed -i '/iptables -A INPUT -p udp --dport 4433 -j ACCEPT/d' /etc/rc.d/rc.local
 	sed -i '/iptables -A INPUT -j DROP/d' /etc/rc.d/rc.local
 	sed -i '/iptables -t nat -F/d' /etc/rc.d/rc.local
-	sed -i '/iptables -t nat -A POSTROUTING -s 10.12.0.0\/24 -o eth0 -j MASQUERADE/d' /etc/rc.d/rc.local
+	sed -i '/iptables -t nat -A POSTROUTING -s 10.8.0.0\/24 -o eth0 -j MASQUERADE/d' /etc/rc.d/rc.local
 	sed -i '/#自动调整mtu，ocserv服务器使用/d' /etc/rc.d/rc.local
 	sed -i '/iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu/d' /etc/rc.d/rc.local
 	sed -i '/systemctl start mariadb/d' /etc/rc.d/rc.local
@@ -157,7 +157,7 @@ iptables -A INPUT -p tcp --dport 4433 -j ACCEPT
 iptables -A INPUT -p udp --dport 4433 -j ACCEPT
 iptables -A INPUT -j DROP
 iptables -t nat -F
-iptables -t nat -A POSTROUTING -s 10.12.0.0/24 -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 #自动调整mtu，ocserv服务器使用
 iptables -I FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu
 EOF
